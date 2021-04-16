@@ -4,11 +4,11 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["src/HostService/HostService.csproj", "HostService/"]
-RUN dotnet restore "src/HostService/HostService.csproj"
-COPY . .
+WORKDIR "/src"
+COPY "*.csproj" "HostService/"
+RUN dotnet restore "/src/HostService/HostService.csproj"
 WORKDIR "/src/HostService"
+COPY . .
 RUN dotnet build "HostService.csproj" -c Release -o /app/build
 
 FROM build AS publish

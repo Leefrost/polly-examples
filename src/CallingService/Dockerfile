@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["src/CallingService/CallingService.csproj", "CallingService/"]
-RUN dotnet restore "src/CallingService/CallingService.csproj"
-COPY . .
+COPY "*.csproj" "CallingService/"
+RUN dotnet restore "/src/CallingService/CallingService.csproj"
 WORKDIR "/src/CallingService"
+COPY . .
 RUN dotnet build "CallingService.csproj" -c Release -o /app/build
 
 FROM build AS publish

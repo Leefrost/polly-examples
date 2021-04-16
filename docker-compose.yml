@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+   host-service:
+     image: ${DOCKER_REGISTRY-}host-service
+     build:
+       context: src/HostService
+       dockerfile: Dockerfile
+   calling-service:
+     image: ${DOCKER_REGISTRY-}calling-service
+     build:
+       context: src/CallingService
+       dockerfile: Dockerfile
