@@ -32,8 +32,12 @@ namespace CallingService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "CallingService", Version = "v1"});
             });
-            
-            services.AddHttpClient()
+
+            services.AddHttpClient("weather-service", client =>
+            {
+                client.BaseAddress = new Uri("http://host-service/api");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +50,7 @@ namespace CallingService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CallingService v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

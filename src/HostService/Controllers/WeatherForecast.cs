@@ -1,6 +1,6 @@
 using System;
 
-namespace CallingService
+namespace HostService.Controllers
 {
     public class WeatherForecast
     {

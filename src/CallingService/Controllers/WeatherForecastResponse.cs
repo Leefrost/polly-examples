@@ -1,8 +1,8 @@
 using System;
 
-namespace HostService
+namespace CallingService.Controllers
 {
-    public class WeatherForecast
+    public class WeatherForecastResponse
     {
         public DateTime Date { get; set; }
 
